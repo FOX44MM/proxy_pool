@@ -396,9 +396,22 @@ class ProxyFetcher(object):
     #             yield ':'.join(proxy)
 
 
+    @staticmethod
+    def freeProxy16():
+        """ Zaeem20 FREE_PROXIES_LIST https://github.com/Zaeem20/FREE_PROXIES_LIST """
+        url = "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/https.txt"
+        try:
+            r = WebRequest().get(url, timeout=10)
+            proxies = ProxyFetcher._parse_proxies_from_text(r.text)
+            for proxy in ProxyFetcher._yield_unique_proxies(proxies):
+                yield proxy
+        except Exception as e:
+            print(e)
+
+
 if __name__ == '__main__':
     p = ProxyFetcher()
-    for _ in p.freeProxy12():
+    for _ in p.freeProxy16():
         print(_)
 
 # http://nntime.com/proxy-list-01.htm

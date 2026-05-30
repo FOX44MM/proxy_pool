@@ -10,3 +10,4 @@ docs/ideas/
 .coverage
 .pytest_cache/
 htmlcov/
+.venv/
